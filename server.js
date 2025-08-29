@@ -16,7 +16,7 @@ app.post("/create-order", async (req, res) => {
     const orderId = "order_" + Date.now();
     const payload = {
       order_id: orderId,
-      order_amount: 100.00,
+      order_amount: 495.00,
       order_currency: "INR",
       customer_details: {
         customer_id: "hdiedbsnd",
