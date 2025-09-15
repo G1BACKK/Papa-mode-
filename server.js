@@ -24,7 +24,7 @@ app.post("/create-order", async (req, res) => {
         customer_phone: "9822786588"
       },
       order_note: "Test Order",
-      return_url: "https://yourusername.github.io/cashfree-frontend/thankyou.html", // ✅ update this!
+      return_url: "https://g1backk.github.io/Ample-/#", // ✅ update this!
       payment_method: {
         upi: {
           mode: "intent" // ✅ suggest intent UPI
