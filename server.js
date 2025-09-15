@@ -27,7 +27,7 @@ app.post("/create-order", async (req, res) => {
       order_note: "Test Order",
       order_meta: {
         return_url:
-          "https://g1backk.github.io/Ample-/thankyou.html?order_id={order_id}&order_status={order_status}"
+          "https://g1backk.github.io/DOWNLODEjalwahack/?order_id={order_id}&order_status={order_status}"
       }
     };
 
