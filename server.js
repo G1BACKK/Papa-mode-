@@ -1,9 +1,23 @@
+const express = require("express");
+const axios = require("axios");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const PORT = process.env.PORT || 3000;
+
+const APP_ID = process.env.CF_APP_ID;
+const SECRET_KEY = process.env.CF_SECRET_KEY;
+
+// Define routes after app is created
 app.post("/create-order", async (req, res) => {
   try {
     const orderId = "order_" + Date.now();
     const payload = {
       order_id: orderId,
-      order_amount: 1.00,
+      order_amount: 1.0,
       order_currency: "INR",
       customer_details: {
         customer_id: "hdiedbsnd",
@@ -36,3 +50,5 @@ app.post("/create-order", async (req, res) => {
     res.status(500).json({ error: "Cashfree order failed." });
   }
 });
+
+app.listen(PORT, () => console.log("Server running on port", PORT));
