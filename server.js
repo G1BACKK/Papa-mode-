@@ -1,16 +1,3 @@
-const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-const PORT = process.env.PORT || 3000;
-
-const APP_ID = process.env.CF_APP_ID;
-const SECRET_KEY = process.env.CF_SECRET_KEY;
-
 app.post("/create-order", async (req, res) => {
   try {
     const orderId = "order_" + Date.now();
@@ -24,11 +11,9 @@ app.post("/create-order", async (req, res) => {
         customer_phone: "9822786588"
       },
       order_note: "Test Order",
-      return_url: "https://g1backk.github.io/Ample-/#", // ✅ update this!
-      payment_method: {
-        upi: {
-          mode: "intent" // ✅ suggest intent UPI
-        }
+      order_meta: {
+        return_url:
+          "https://g1backk.github.io/Ample-/thankyou.html?order_id={order_id}&order_status={order_status}"
       }
     };
 
@@ -37,7 +22,7 @@ app.post("/create-order", async (req, res) => {
       payload,
       {
         headers: {
-          "x-api-version": "2022-09-01",
+          "x-api-version": "2023-08-01",
           "x-client-id": APP_ID,
           "x-client-secret": SECRET_KEY,
           "Content-Type": "application/json"
@@ -51,5 +36,3 @@ app.post("/create-order", async (req, res) => {
     res.status(500).json({ error: "Cashfree order failed." });
   }
 });
-
-app.listen(PORT, () => console.log("Server running on port", PORT));
